@@ -1,0 +1,9 @@
+$dark $mol_page
+	src \https://ai.img-converter.com/txt2img/info/realistic-sexy-foreign-girls-wearing-sexy-transparent-saree-and-tight-pants-hug-gzhus
+	body /
+		<= picture $mol_image
+			uri <= img_src \
+			natural_width <= img_width \
+			natural_height <= img_height \
+			minimal_width \512
+			minimal_height \512
