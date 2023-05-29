@@ -24,5 +24,13 @@ namespace $.$$ {
 		createdAt() {
 			return ( new $mol_time_moment( this.picture_info().createdAt ) ).toString( 'YYYY-MM-DD hh:mm (WeekDay)' )
 		}
+
+
+		seo_description() {
+			return this.picture_info().description
+		}
+		seo_title() {
+			return this.picture_info().seo_name
+		}
 	}
 }
