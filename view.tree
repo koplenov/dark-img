@@ -5,5 +5,5 @@ $dark $mol_page
 			uri <= img_src \
 			natural_width <= img_width \
 			natural_height <= img_height \
-			minimal_width \512
-			minimal_height \512
+			minimal_width 512
+			minimal_height 512
