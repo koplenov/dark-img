@@ -1020,6 +1020,29 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    class $mol_paragraph extends $mol_view {
+        line_height(): number;
+        letter_width(): number;
+        width_limit(): number;
+        row_width(): number;
+        sub(): readonly any[];
+    }
+}
+
+declare namespace $.$$ {
+    class $mol_paragraph extends $.$mol_paragraph {
+        maximal_width(): number;
+        width_limit(): number;
+        minimal_width(): number;
+        row_width(): number;
+        minimal_height(): number;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
     let $mol_action: typeof $mol_wire_method;
 }
 
@@ -1065,13 +1088,138 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    class $mol_time_base {
+        static patterns: Record<string, (arg: any) => string>;
+        static formatter(pattern: string): (arg: any) => string;
+        toString(pattern: string): string;
+    }
+}
+
+declare namespace $ {
+    type $mol_time_duration_config = number | string | {
+        year?: number;
+        month?: number;
+        day?: number;
+        hour?: number;
+        minute?: number;
+        second?: number;
+    };
+    class $mol_time_duration extends $mol_time_base {
+        constructor(config?: $mol_time_duration_config);
+        readonly year: number;
+        readonly month: number;
+        readonly day: number;
+        readonly hour: number;
+        readonly minute: number;
+        readonly second: number;
+        summ(config: $mol_time_duration_config): $mol_time_duration;
+        mult(numb: number): $mol_time_duration;
+        count(config: $mol_time_duration_config): number;
+        valueOf(): number;
+        toJSON(): string;
+        toString(pattern?: string): string;
+        [Symbol.toPrimitive](mode: 'default' | 'number' | 'string'): string | number;
+        static patterns: {
+            '#Y': (duration: $mol_time_duration) => string;
+            '#M': (duration: $mol_time_duration) => string;
+            '#D': (duration: $mol_time_duration) => string;
+            '#h': (duration: $mol_time_duration) => string;
+            '#m': (duration: $mol_time_duration) => string;
+            '#s': (duration: $mol_time_duration) => string;
+        };
+    }
+}
+
+declare namespace $ {
+    enum $mol_time_moment_weekdays {
+        monday = 0,
+        tuesday = 1,
+        wednesday = 2,
+        thursday = 3,
+        friday = 4,
+        saturday = 5,
+        sunday = 6
+    }
+    type $mol_time_moment_config = number | Date | string | {
+        year?: number;
+        month?: number;
+        day?: number;
+        hour?: number;
+        minute?: number;
+        second?: number;
+        offset?: $mol_time_duration_config;
+    };
+    class $mol_time_moment extends $mol_time_base {
+        constructor(config?: $mol_time_moment_config);
+        readonly year: number | undefined;
+        readonly month: number | undefined;
+        readonly day: number | undefined;
+        readonly hour: number | undefined;
+        readonly minute: number | undefined;
+        readonly second: number | undefined;
+        readonly offset: $mol_time_duration | undefined;
+        get weekday(): number;
+        _native: Date | undefined;
+        get native(): Date;
+        _normal: $mol_time_moment | undefined;
+        get normal(): $mol_time_moment;
+        merge(config: $mol_time_moment_config): $mol_time_moment;
+        shift(config: $mol_time_duration_config): $mol_time_moment;
+        mask(config: $mol_time_moment_config): $mol_time_moment;
+        toOffset(config?: $mol_time_duration_config): $mol_time_moment;
+        valueOf(): number;
+        toJSON(): string;
+        toString(pattern?: string): string;
+        [Symbol.toPrimitive](mode: 'default' | 'number' | 'string'): string | number;
+        static patterns: {
+            YYYY: (moment: $mol_time_moment) => string;
+            AD: (moment: $mol_time_moment) => string;
+            YY: (moment: $mol_time_moment) => string;
+            Month: (moment: $mol_time_moment) => string;
+            'DD Month': (moment: $mol_time_moment) => string;
+            'D Month': (moment: $mol_time_moment) => string;
+            Mon: (moment: $mol_time_moment) => string;
+            'DD Mon': (moment: $mol_time_moment) => string;
+            'D Mon': (moment: $mol_time_moment) => string;
+            '-MM': (moment: $mol_time_moment) => string;
+            MM: (moment: $mol_time_moment) => string;
+            M: (moment: $mol_time_moment) => string;
+            WeekDay: (moment: $mol_time_moment) => string;
+            WD: (moment: $mol_time_moment) => string;
+            '-DD': (moment: $mol_time_moment) => string;
+            DD: (moment: $mol_time_moment) => string;
+            D: (moment: $mol_time_moment) => string;
+            Thh: (moment: $mol_time_moment) => string;
+            hh: (moment: $mol_time_moment) => string;
+            h: (moment: $mol_time_moment) => string;
+            ':mm': (moment: $mol_time_moment) => string;
+            mm: (moment: $mol_time_moment) => string;
+            m: (moment: $mol_time_moment) => string;
+            ':ss': (moment: $mol_time_moment) => string;
+            ss: (moment: $mol_time_moment) => string;
+            s: (moment: $mol_time_moment) => string;
+            '.sss': (moment: $mol_time_moment) => string;
+            sss: (moment: $mol_time_moment) => string;
+            Z: (moment: $mol_time_moment) => string;
+        };
+    }
+}
+
+declare namespace $ {
     class $dark extends $mol_page {
         src(): string;
         body(): readonly any[];
+        avatar_src(): string;
+        Avatar(): $$.$mol_image;
+        avatar_nickname(): string;
+        Nickname(): $$.$mol_paragraph;
+        created_by(): $mol_view;
         img_src(): string;
         img_width(): number;
         img_height(): number;
-        picture(): $$.$mol_image;
+        Picture(): $$.$mol_image;
+        createdAt(): string;
+        CreatedAt(): $$.$mol_paragraph;
     }
 }
 
@@ -1081,6 +1229,9 @@ declare namespace $.$$ {
         img_src(): any;
         img_width(): number;
         img_height(): number;
+        avatar_src(): any;
+        avatar_nickname(): any;
+        createdAt(): string;
     }
 }
 

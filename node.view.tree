@@ -49,3 +49,10 @@ $mol_image $mol_view
 		load? <=> load? null
 	minimal_width 16
 	minimal_height 16
+
+$mol_paragraph $mol_view
+	line_height 24
+	letter_width 7
+	width_limit +Infinity
+	row_width 0
+	sub / <= title
