@@ -3,7 +3,7 @@ $dark $mol_page
 	body /
 		<= picture $mol_image
 			uri <= img_src \
-			natural_width <= img_width \
-			natural_height <= img_height \
+			natural_width <= img_width 512
+			natural_height <= img_height 512
 			minimal_width 512
 			minimal_height 512

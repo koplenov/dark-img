@@ -2,7 +2,7 @@ namespace $.$$ {
 	export class $dark extends $.$dark {
 		@$mol_mem
 		picture_info(){
-			return $mol_fetch.json(this.src())
+			return $mol_fetch.json(this.src()) as any
 		}
 		img_src() {
 			return this.picture_info().src
