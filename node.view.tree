@@ -1,0 +1,51 @@
+$mol_scroll $mol_view
+	scroll_top?val 0
+	scroll_left?val 0
+	field *
+		^
+		tabIndex <= tabindex -1
+	event *
+		^
+		scroll?event <=> event_scroll?event null
+
+$mol_page $mol_view
+	dom_name \article
+	field *
+		^
+		tabIndex <= tabindex -1
+	sub /
+		<= Head $mol_view
+			minimal_height 64
+			dom_name \header
+			sub <= head /
+				<= Title $mol_view
+					dom_name \h1
+					sub <= title_content /
+						<= Logo null
+						<= title
+				<= Tools $mol_view
+					sub <= tools /$mol_view_content
+		<= Body $mol_scroll
+			scroll_top?val => body_scroll_top?val
+			sub <= body /$mol_view_content
+		<= Foot $mol_view
+			dom_name \footer
+			sub <= foot /$mol_view
+
+$mol_image $mol_view
+	dom_name \img
+	field *
+		^
+		src <= uri \
+		alt <= title
+		loading <= loading \eager
+		decoding <= decoding \async
+		crossOrigin <= cors null
+	attr *
+		^
+		width <= natural_width? 0
+		height <= natural_height? 0
+	event *
+		load? <=> load? null
+	minimal_width 16
+	minimal_height 16
