@@ -7923,4 +7923,5 @@ var $;
 })($ || ($ = {}));
 //dark/view.tree.ts
 
+export default $
 //# sourceMappingURL=node.js.map

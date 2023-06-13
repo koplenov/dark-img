@@ -7300,4 +7300,5 @@ var $;
 })($ || ($ = {}));
 //dark/view.tree.ts
 
+export default $
 //# sourceMappingURL=web.js.map
