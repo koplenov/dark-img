@@ -6235,7 +6235,7 @@ var $;
 		}
 		Clear(){
 			const obj = new this.$.$mol_button_minor();
-			(obj.hint) = () => (this.$.$mol_locale.text("$mol_search_Clear_hint"));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$mol_search_Clear_hint")));
 			(obj.click) = (next) => ((this.clear(next)));
 			(obj.sub) = () => ([(this.Clear_icon())]);
 			return obj;
@@ -7866,7 +7866,7 @@ var $;
 		}
 		UserCard(){
 			const obj = new this.$.$mol_card();
-			(obj.status) = () => (this.$.$mol_locale.text("$dark_UserCard_status"));
+			(obj.status) = () => ((this.$.$mol_locale.text("$dark_UserCard_status")));
 			(obj.content) = () => ([(this.created_by())]);
 			return obj;
 		}
@@ -7893,7 +7893,7 @@ var $;
 		}
 		DateCard(){
 			const obj = new this.$.$mol_card();
-			(obj.status) = () => (this.$.$mol_locale.text("$dark_DateCard_status"));
+			(obj.status) = () => ((this.$.$mol_locale.text("$dark_DateCard_status")));
 			(obj.content) = () => ([(this.createdAt())]);
 			return obj;
 		}
