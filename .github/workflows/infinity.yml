@@ -22,3 +22,4 @@ jobs:
       with:
         branch: gh-pages
         folder: 'dark/-'
+        git-config-email: deploy-bot
